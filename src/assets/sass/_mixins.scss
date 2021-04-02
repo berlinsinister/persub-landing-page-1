@@ -1,0 +1,77 @@
+// resets
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// flex alignments
+@mixin flex-centered-horizontally {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-centered-vertically {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-centered-totally {
+  @include flex-centered-horizontally;
+  flex-direction: column;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+// * end of flex alignments
+
+// inputs
+@mixin input-general {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  color: white;
+  border: none;
+  border-radius: 0.7rem;
+  box-sizing: border-box;
+  transition: $transition-time ease-out;
+}
+
+@mixin input-text-or-password($width, $main-color) {
+  width: $width;
+  height: 8.4rem;
+  background: rgba(white, 0.4);
+  @include input-general;
+  &:focus {
+    outline: none;
+    background: rgba(white, 0.6);
+    box-shadow: 0 0 2px 3px rgba($main-color, 1);
+  }
+  &::placeholder {
+    color: white;
+    font-family: $font-family;
+    transition: $transition-time ease-out;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+@mixin input-submit($width, $main-color) {
+  width: $width;
+  height: 7.2rem;
+  background: $main-color;
+  @include input-general;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    background: rgba($main-color, 0.7);
+    transform: translate(2px, 2px);
+  }
+}
